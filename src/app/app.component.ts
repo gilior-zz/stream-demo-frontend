@@ -40,16 +40,12 @@ export class AppComponent {
       this._appService.getStream()
         .subscribe(stream => {
             const player = this.myVideo['nativeElement'];
-            this.stream = new Blob([stream.blob], {type: 'application/octet-stream'});
-            console.log(this.stream);
             try {
-
               let mediaSource = new MediaSource;
               player.src = URL.createObjectURL(mediaSource);
-              var mimeCodec = 'video/mp4';
+              var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
               var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-              sourceBuffer.mode = 'sequence';
-              sourceBuffer.appendBuffer(stream);
+              sourceBuffer.appendBuffer(stream.value);
             } catch (e) {
               console.log('Exception while appending', e);
             }
