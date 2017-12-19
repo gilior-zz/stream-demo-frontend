@@ -45,7 +45,7 @@ export class AppComponent {
               player.src = URL.createObjectURL(mediaSource);
               var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
               var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-              sourceBuffer.appendBuffer(byteArray);
+              sourceBuffer.appendBuffer(byteArray.value);
             } catch (e) {
               console.log('Exception while appending', e);
             }
