@@ -26,14 +26,14 @@ export class AppService {
       headers: httpHeaders,
       responseType: 'arraybuffer'
     })
-      .map(data => {
-        let blob = new Blob([data]);
-        var fileReader = new FileReader();
-        let arrayBuffer = data;
-        fileReader.readAsArrayBuffer(blob);
-        var byteArray = new Uint8Array(arrayBuffer);
-        console.log(byteArray);
-        return Observable.of(byteArray);
+      .map(buffer => {
+        // let blob = new Blob([buffer]);
+        // var fileReader = new FileReader();
+        // let arrayBuffer = buffer;
+        // fileReader.readAsArrayBuffer(blob);
+        // var byteArray = new Uint8Array(arrayBuffer);
+        // console.log(byteArray);
+        return Observable.of(buffer);
       })
       .catch(this.handleError);
   }

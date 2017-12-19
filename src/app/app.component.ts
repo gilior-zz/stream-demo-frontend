@@ -42,7 +42,8 @@ export class AppComponent {
             const player = this.myVideo['nativeElement'];
             try {
               let mediaSource = new MediaSource;
-              player.src = URL.createObjectURL(mediaSource);
+              let fileUrl = URL.createObjectURL(mediaSource);
+              player.src = fileUrl;
               var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
               var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
               sourceBuffer.appendBuffer(byteArray.value);
