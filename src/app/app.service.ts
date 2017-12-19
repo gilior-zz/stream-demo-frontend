@@ -32,8 +32,8 @@ export class AppService {
         let arrayBuffer = data;
         fileReader.readAsArrayBuffer(blob);
         var byteArray = new Uint8Array(arrayBuffer);
-        console.log(data);
-        return Observable.of(data);
+        console.log(byteArray);
+        return Observable.of(byteArray);
       })
       .catch(this.handleError);
   }

@@ -38,14 +38,14 @@ export class AppComponent {
     if (e.target.checked) {
       this.checked = true;
       this._appService.getStream()
-        .subscribe(stream => {
+        .subscribe(byteArray => {
             const player = this.myVideo['nativeElement'];
             try {
               let mediaSource = new MediaSource;
               player.src = URL.createObjectURL(mediaSource);
               var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
               var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-              sourceBuffer.appendBuffer(stream.value);
+              sourceBuffer.appendBuffer(byteArray);
             } catch (e) {
               console.log('Exception while appending', e);
             }
